@@ -1,0 +1,7 @@
+bin
+*.tar
+*.gz
+*.errlog
+*.log
+*.so
+preprocess
