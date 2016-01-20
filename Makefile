@@ -5,7 +5,7 @@ CFLAGS=-O3
 CFLAGS+= -Wno-deprecated
 
 CFLAGS+=  -fopenmp  -std=c++0x -L/usr/local/lib
-LFLAGS= -lboost_thread -lpthread  -lconfig++ -ltcmalloc_minimal 
+LFLAGS= -lboost_thread -lboost_system -lpthread  -lconfig++ -L. -ltcmalloc_minimal
 LFLAGS+= -ltcmalloc_minimal -laio
 
 SRC_DIR:=./src
