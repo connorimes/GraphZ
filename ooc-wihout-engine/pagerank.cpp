@@ -108,7 +108,7 @@ void init_per_par(int iter, int nth_par){
         }
         ftruncate(fmsgs[nth_par], nth_par);
     }
-    HE_PROFILER_EVENT_END(INIT_PER_PAR, iter, 1, event);
+    HE_PROFILER_EVENT_END(event, INIT_PER_PAR, iter, 1);
 }
 
 //only usefull for 1par processing
@@ -130,7 +130,7 @@ void save_vals(int nth_par){
     if( mode.compare("1par") == 0){
         delete[] vertices;
     }
-    HE_PROFILER_EVENT_END(SAVE_VALS, nth_par, 1, event);
+    HE_PROFILER_EVENT_END(event, SAVE_VALS, nth_par, 1);
 }
 
 void clear_per_par(){
@@ -139,7 +139,7 @@ void clear_per_par(){
     fedges->close();
     delete fbases;
     delete fedges;
-    HE_PROFILER_EVENT_END(CLEAR_PER_PAR, CLEAR_PER_PAR, 1, event);
+    HE_PROFILER_EVENT_END(event, CLEAR_PER_PAR, CLEAR_PER_PAR, 1);
 }
 
 bool is_vertex_in_par(vertex_id vid, int nth_par){
@@ -220,7 +220,7 @@ void iter1par(int iter, int nth_par=0){
         //cout << fbases->tellg() << endl;
         fbases->read((char *)&cur_ofst, sizeof(unsigned long long));
     }
-    HE_PROFILER_EVENT_END(ITER1PAR, ITER1PAR, 1, event);
+    HE_PROFILER_EVENT_END(event, ITER1PAR, ITER1PAR, 1);
 }
 
 void process1par(int max_iter){
@@ -270,7 +270,7 @@ int main(int argc, char *argv[]){
     //string fpath = "/run/media/xu/graph/noengine/data/com-lj.ungraph.txt";
     //string fpath = "/run/media/xu/graph/noengine/data/followers.txt";
     int max_iter = 6;
-    if (HE_PROFILER_INIT(NUM_PROFILERS, APPLICATION, PROFILER_NAME, 20, "PAGERANK", NULL)) {
+    if (HE_PROFILER_INIT(NUM_PROFILERS, PROFILER_NAMES, NULL, 20, APPLICATION, 0, NULL)) {
         perror("Failed to init profiler");
         return -1;
     }

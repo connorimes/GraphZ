@@ -18,7 +18,7 @@ typedef enum {
 
 #define PROFILER_GENERATE_NAME(STRING) #STRING,
 
-static const char* PROFILER_NAME[] = {
+static const char* PROFILER_NAMES[] = {
     PROFILER_FOREACH(PROFILER_GENERATE_NAME)
 };
 
