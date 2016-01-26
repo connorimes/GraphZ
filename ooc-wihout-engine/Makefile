@@ -2,7 +2,7 @@
 CC = g++
 
 CFLAGS = -O3 -DHE_PROFILER_ENABLE
-LFLAGS = -L.. -lhe-profiler -lenergymon-default -lhbs-pow -lboost_system -lboost_filesystem -lconfig++ -ltcmalloc_minimal
+LFLAGS = -L.. $(shell pkg-config --libs --static he-profiler) -lboost_system -lboost_filesystem -lconfig++ -ltcmalloc_minimal
 
 BIN_DIR=./bin
 
